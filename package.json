@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next export"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -21,6 +22,8 @@
   "devDependencies": {
     "@types/node": "^14.0.5",
     "@types/react": "^16.9.35",
+    "frontmatter-markdown-loader": "^3.5.0",
+    "next-mdx-frontmatter": "^0.0.3",
     "prettier": "^2.0.5",
     "typescript": "^3.9.3"
   }
