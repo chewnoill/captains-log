@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import { attributes, react as Stuff } from "content/stuff.md";
 
-dynamic(() => import('utils/netlify-login'), {ssr: false})
+dynamic(() => import("utils/netlify-login"), { ssr: false });
 
 export default () => {
   const { title, cats } = attributes;
