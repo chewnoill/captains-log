@@ -9,8 +9,8 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-    - label: "Root"
-      name: "root"
+    - label: "Index"
+      name: "index"
       file: "src/content/index.md"
       fields:
         - { label: "Title", name: "title", widget: "string"}
