@@ -1,4 +1,4 @@
-import { ThemeProvider } from "ui";
+import { ThemeProvider, Page } from "ui";
 
 function MyApp({ Component, pageProps }) {
   return (

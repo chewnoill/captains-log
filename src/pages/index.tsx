@@ -1,5 +1,11 @@
-export default () => (
-  <div>
-    <h1>Hello World</h1>
-  </div>
-);
+import dynamic from "next/dynamic";
+import  * as args from "content/index.md";
+import Page from 'components/page';
+
+dynamic(() => import("utils/netlify-login"), { ssr: false });
+
+export default () => {
+  return (
+      <Page {...args} body={args.default}/>
+  );
+};

@@ -8,12 +8,17 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next export"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@material-ui/core": "^4.10.0",
+    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/runtime": "^1.6.5",
     "emotion-theming": "^10.0.27",
+    "netlify-cms-app": "^2.12.14",
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -21,6 +26,8 @@
   "devDependencies": {
     "@types/node": "^14.0.5",
     "@types/react": "^16.9.35",
+    "frontmatter-markdown-loader": "^3.5.0",
+    "next-mdx-frontmatter": "^0.0.3",
     "prettier": "^2.0.5",
     "typescript": "^3.9.3"
   }

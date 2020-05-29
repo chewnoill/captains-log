@@ -3,7 +3,7 @@ import emotionStyled, { CreateStyled } from "@emotion/styled";
 import { Global, css } from "@emotion/core";
 import {
   ThemeProvider as EmotionThemeProvider,
-  useTheme as useEmotionTheme
+  useTheme as useEmotionTheme,
 } from "emotion-theming";
 import { buildTheme, Theme } from "./theme";
 
@@ -25,15 +25,6 @@ const GlobalStyles = () => {
         }
       `}
     />
-  );
-};
-
-export const ThemeProvider = (props: any) => {
-  return (
-    <EmotionThemeProvider theme={buildTheme(false)}>
-      {props.children}
-      <GlobalStyles />
-    </EmotionThemeProvider>
   );
 };
 
@@ -84,11 +75,19 @@ h6 {
 }
 `;
 
-export const Div = styled.div(textStyles, ({ theme }) => ``);
+export const Div = styled.div(textStyles);
 
 export const Page = styled(Div)(
   ({ theme }) => `
-  min-height: 100vh;
   width: ${theme.size[1]};
 `
 );
+
+export const ThemeProvider = (props: any) => {
+  return (
+    <EmotionThemeProvider theme={buildTheme(false)}>
+      <Page>{props.children}</Page>
+      <GlobalStyles />
+    </EmotionThemeProvider>
+  );
+};
