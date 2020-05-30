@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
-import { attributes, react as Stuff } from "content/stuff.md";
+import Content, { title, cats } from "content/index.md";
 
 dynamic(() => import("utils/netlify-login"), { ssr: false });
 
 export default () => {
-  const { title, cats } = attributes;
   return (
     <div>
       <h1>Hello World</h1>
@@ -17,7 +16,7 @@ export default () => {
           </li>
         ))}
       </ul>
-      <Stuff />
+      <Content />
     </div>
   );
 };

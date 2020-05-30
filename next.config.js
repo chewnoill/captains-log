@@ -1,10 +1,6 @@
-module.exports = {
-  webpack: (cfg) => {
-    cfg.module.rules.push({
-      test: /\.md$/,
-      loader: "frontmatter-markdown-loader",
-      options: { mode: ["react-component"] },
-    });
-    return cfg;
-  },
-};
+const withMdxFm = require('next-mdx-frontmatter')
+
+const config = withMdxFm({extension: /\.mdx?$/})({})
+
+module.exports = config
+
