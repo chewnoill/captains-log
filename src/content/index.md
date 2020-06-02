@@ -9,4 +9,7 @@ And more content is here
 
 
 
-<img src="img/img_20200419_213104.jpg" alt="mean face" title="Will"/>
+<img 
+   src="img/img_20200419_213104.jpg" 
+   alt="mean face" 
+   title="Will"/>
