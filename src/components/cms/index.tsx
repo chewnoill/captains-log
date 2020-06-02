@@ -9,8 +9,8 @@ import { CacheProvider } from "@emotion/core";
 
 class CSSInjector extends Component {
   cache: any;
-  constructor(...args) {
-    super(...args);
+  constructor(p) {
+    super(p);
     const iframe = document.getElementsByTagName("iframe")[0];
     const iframeHead = iframe.contentDocument.head;
     this.cache = createCache({ container: iframeHead });

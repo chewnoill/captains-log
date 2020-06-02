@@ -5,7 +5,7 @@ export const StyledIndex = styled.div();
 
 export interface Props {
   title: string;
-  body: () => React.ReactNode;
+  body: () => React.ReactElement;
 }
 
 export default ({ title, body: Body }: Props) => {
