@@ -8,4 +8,5 @@ And more content is here
 
 
 
-![mean face](img/img_20200419_213104.jpg "Will")
+
+<img src="img/img_20200419_213104.jpg" alt="mean face" title="Will"/>
