@@ -18,6 +18,7 @@
     "@mdx-js/runtime": "^1.6.5",
     "dateformat": "^3.0.3",
     "emotion-theming": "^10.0.27",
+    "netlify-cms-app": "^2.12.14",
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
