@@ -1,6 +1,4 @@
-const withMdxFm = require("next-mdx-frontmatter");
-
-const config = withMdxFm({ extension: /\.mdx?$/ })({
+const config = {
   webpack: (config, { isServer }) => {
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {
@@ -11,6 +9,6 @@ const config = withMdxFm({ extension: /\.mdx?$/ })({
 
     return config;
   },
-});
+};
 
 module.exports = config;

@@ -1,27 +1,17 @@
-import React from 'react';
+import React from "react";
 import Page from "components/page";
-import ReactDOMServer from "react-dom/server";
+import { renderStaticMDX } from "utils/load-mdx";
 
-type Props = { slug: string; page?: {title: string; body: string}; };
+type Props = { slug: string; child: string };
 
-const loadBlog = (name: string) =>
-  import(`content/blog/${name}.md`).catch((e) => ({ error: "error" }));
-
-const BlogPost = ({ page }: Props) => {
-  return (
-    <Page child={page.body}/>
-  );
+const BlogPost = ({ child }: Props) => {
+  return <Page child={child} />;
 };
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const blog = await loadBlog(slug);
-  const { default: Body, ...args } = blog;
-  const page = {
-    ...args,
-    body: Body && ReactDOMServer.renderToString(<Body />),
-  };
-  return { props: { page, slug } };
+  const child = await renderStaticMDX(`src/content/blog/${slug}.md`);
+  return { props: { child, slug } };
 }
 
 export async function getStaticPaths() {

@@ -2,7 +2,7 @@ import { Component } from "react";
 import Head from "next/head";
 import CMS from "netlify-cms-app";
 import Page from "components/page";
-import MDX from "@mdx-js/runtime";
+import MDX from "components/mdx";
 import { ThemeProvider } from "ui";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/core";
