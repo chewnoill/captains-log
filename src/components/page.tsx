@@ -3,11 +3,9 @@ import { styled, Page } from "ui";
 
 export const StyledIndex = styled(Page)(
   ({ theme }) => `
-& > div {
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-}
+display: flex;
+flex-direction: column;
+align-items:center;
 
 .title {
   text-align: center;
