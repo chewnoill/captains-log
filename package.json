@@ -21,7 +21,8 @@
     "netlify-cms-app": "^2.12.14",
     "next": "^9.4.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-syntax-highlighter": "^12.2.1"
   },
   "devDependencies": {
     "@types/node": "^14.0.5",
