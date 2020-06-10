@@ -6,6 +6,9 @@ export const StyledIndex = styled(Page)(
 display: flex;
 flex-direction: column;
 align-items:center;
+margin: ${theme.size[4]}px;
+width: calc(${theme.size[1]} - ${2*theme.size[4]}px);
+
 
 .title {
   text-align: center;
@@ -20,11 +23,12 @@ code {
 article {
   font-size: ${theme.fontSizes[3]}px;
   line-height: ${theme.lineHeights[1]};
-  max-width:${theme.measures[2]};
+  max-width: min(${theme.measures[2]},100%);
+  margin: ${theme.space[3]}px;
 }
 
 section {
-  max-width:${theme.measures[1]};
+  max-width: min(${theme.measures[1]},100%);
   background: ${theme.colors["black-10"]};
   padding: ${theme.space[5]}px;
   margin-bottom: ${theme.space[5]}px;
@@ -39,7 +43,6 @@ asside {
   background: ${theme.colors["moon-gray"]};
   padding: ${theme.space[2]}px;
   margin: ${theme.space[3]}px;
-  max-width: ${theme.size[7]}px;
   float: right;
 }
 
@@ -50,11 +53,11 @@ heading {
 }
 
 .narrow-text {
-  max-width:${theme.measures[0]};
+  max-width:min(${theme.measures[0]}, 100%);
 }
 
 .standard-text {
-  max-width:${theme.measures[1]};
+  max-width:min(${theme.measures[1]}, 100%);
 }
 
 .wide-text {
