@@ -43,10 +43,10 @@ blockquote {
 }
 
 asside {
-  background: ${theme.colors["moon-gray"]};
   padding: ${theme.space[2]}px;
   margin: ${theme.space[3]}px;
   float: right;
+  max-width: min(${theme.measures[0]},100%);
 }
 
 heading {
