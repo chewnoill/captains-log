@@ -50,13 +50,13 @@ return React.createElement(MDXProvider, { components },
   return fn(React, ...values);
 };
 
-export const renderToString = ({
+export const renderMdx = ({
   scope = {},
   components = {},
   remarkPlugins = [],
   rehypePlugins = [],
   source, // MDX Source
-}: Props): Result => {
+}: Props) => {
   // Compile MDX source into jsx components
   const jsx = mdx
     .sync(source, {
@@ -70,16 +70,18 @@ export const renderToString = ({
   const code = transform(jsx, {
     objectAssign: "Object.assign",
   }).code;
+  return { code, component: genReact({ code, components, scope }) };
+};
 
+export const renderToString = (props: Props): Result => {
   // We need to return the code used to generate the
   // static markup, we'll use this to hydrate the
   // component later.
+  const { code, component } = renderMdx(props);
   return {
     code,
-    staticMDX: ReactDOMServer.renderToString(
-      genReact({ code, components, scope })
-    ),
-    scope,
+    staticMDX: ReactDOMServer.renderToString(component),
+    scope: props.scope || {},
   };
 };
 

@@ -3,7 +3,7 @@ import Code from "components/code";
 import Page from "components/page";
 import remarkImages from "remark-images";
 import remarkEmoji from "remark-emoji";
-import { renderToString, hydrate } from "utils/mdx-hydra";
+import { renderMdx, renderToString, hydrate } from "utils/mdx-hydra";
 
 export const components = {
   Prompt,
@@ -17,8 +17,8 @@ const loadFile = (name: string) => {
   return fm(fs.readFileSync(name).toString());
 };
 
-export const renderStaticMDXString = (content: string, attributes: object) => {
-  return renderToString({
+export const renderMDXString = (content: string, attributes: object) => {
+  return renderMdx({
     source: content,
     components: components,
     remarkPlugins: [remarkImages, remarkEmoji],

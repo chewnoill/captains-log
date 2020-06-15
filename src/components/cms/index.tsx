@@ -5,7 +5,7 @@ import Page from "components/page";
 import { ThemeProvider } from "ui";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/core";
-import { renderStaticMDXString, hydrateMDX } from "utils/load-mdx";
+import { renderMDXString } from "utils/load-mdx";
 
 class CSSInjector extends Component {
   cache: any;
@@ -27,7 +27,7 @@ const ThemedPage = (args: any) => {
   const { body, ...props } = args.entry.getIn(["data"]).toJS();
   let child = null;
   try {
-    child = hydrateMDX(renderStaticMDXString(body, props));
+    child = renderMDXString(body, props).component;
   } catch (e) {
     child = <div>error</div>;
   }
