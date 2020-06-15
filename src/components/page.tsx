@@ -3,12 +3,15 @@ import { styled, Page } from "ui";
 
 export const StyledIndex = styled(Page)(
   ({ theme }) => `
-display: flex;
-flex-direction: column;
-align-items:center;
 margin: ${theme.size[4]}px;
-width: calc(${theme.size[1]} - ${2*theme.size[4]}px);
+width: calc(${theme.size[1]} - ${2 * theme.size[4]}px);
 
+>div {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
 
 .title {
   text-align: center;
@@ -68,9 +71,9 @@ heading {
 );
 
 export interface Props {
-  child: string;
+  children: any;
 }
 
-export default ({ child }: Props) => {
-  return <StyledIndex dangerouslySetInnerHTML={{ __html: child }} />;
+export default ({ children }: Props) => {
+  return <StyledIndex>{children}</StyledIndex>;
 };

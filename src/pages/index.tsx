@@ -1,11 +1,13 @@
 import Page from "components/page";
-import ReactDOMServer from "react-dom/server";
-import { renderStaticMDX } from "utils/load-mdx";
+import { renderStaticMDX, hydrateMDX } from "utils/load-mdx";
 
-export default ({ body }) => <Page child={body} />;
+type Props = { code: string; staticMDX: string; scope: any };
+
+export default (props: Props) => {
+  return <Page>{hydrateMDX(props)}</Page>
+};
 
 export async function getStaticProps({ params }) {
-  const body = await renderStaticMDX("src/content/index.md");
-
-  return { props: { body } };
+  const props = await renderStaticMDX("src/content/index.md");
+  return { props };
 }
