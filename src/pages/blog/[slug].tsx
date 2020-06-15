@@ -1,24 +1,25 @@
 import React from "react";
 import Page from "components/page";
-import { renderStaticMDX } from "utils/load-mdx";
+import { renderStaticMDX, hydrateMDX } from "utils/load-mdx";
+import { Result } from "utils/mdx-hydra";
 
-type Props = { slug: string; child: string };
+type Props = Result & { slug: string };
 
-const BlogPost = ({ child }: Props) => {
-  return <Page child={child} />;
+const BlogPost = (props: Props) => {
+  return <Page children={hydrateMDX(props)} />;
 };
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const child = await renderStaticMDX(`src/content/blog/${slug}.md`);
-  return { props: { child, slug } };
+  const props = await renderStaticMDX(`src/content/blog/${slug}.md`);
+  return { props: { ...props, slug } };
 }
 
 export async function getStaticPaths() {
   const fs = require("fs");
   const paths = fs
     .readdirSync("src/content/blog")
-    .map((name) => ({params: {slug: name.split(".")[0]}}));
+    .map((name) => ({ params: { slug: name.split(".")[0] } }));
 
   return {
     paths,

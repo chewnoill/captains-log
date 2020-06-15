@@ -1,12 +1,11 @@
+import React from "react";
 import { Component } from "react";
-import Head from "next/head";
 import CMS from "netlify-cms-app";
 import Page from "components/page";
-import MDX from "components/mdx";
 import { ThemeProvider } from "ui";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/core";
-import ReactDOMServer from "react-dom/server";
+import { renderStaticMDXString } from "utils/load-mdx";
 
 class CSSInjector extends Component {
   cache: any;
@@ -28,14 +27,20 @@ const ThemedPage = (args: any) => {
   const { body, ...props } = args.entry.getIn(["data"]).toJS();
   let child = null;
   try {
-    child = ReactDOMServer.renderToString(<MDX scope={props}>{body}</MDX>);
+    child = renderStaticMDXString(body, props);
   } catch (e) {
-    child = "error";
+    child = { staticMDX: "error" };
   }
   return (
     <CSSInjector>
       <ThemeProvider>
-        <Page {...props} child={child} />
+        <Page>
+          {React.createElement("div", {
+            dangerouslySetInnerHTML: {
+              __html: child.staticMDX,
+            },
+          })}
+        </Page>
       </ThemeProvider>
     </CSSInjector>
   );
