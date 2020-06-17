@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const Mermaid = dynamic(() => import("components/mermaid"), { ssr: false });
 
 interface Props {
-  className: string;
+  className?: string;
   children: string;
 }
 
