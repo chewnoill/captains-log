@@ -22,7 +22,41 @@ In order to pass props into a component, without having to pass that prop into t
 
 <section>
 
-This is a little complicated
+There are a few ways to imagine how props get injected into your component. At the end of the day, Components are simply javascript functions that take a single object as a parameter and return another javascript function.
+
+There has been some debate in the office about which method should be preferred.
+
+A **HOC**, or Higher order component, is a function that takes another function and returns another function. 
+
+```jsx
+function HOCExample(Component){
+  const extraProps = {...}
+  return (props)=><Component {...props} {...extraProps} />
+}
+```
+The idea is to be able to inject props into the component and hide them from the parent component.
+
+**Hooks** are a much newer idea in React.
+
+</section>
+
+<section>
+
+Babel helps with the return value of your components. 
+
+Using the JSX syntax, you might write a component that looks like this:
+```js
+const HelloWorld = ({name}) => <div>hello {name}!</div>
+```
+
+babel will transpile that into
+```js
+"use strict";
+
+const HelloWorld = ({
+  name
+}) => React.createElement("div", null, "hello ", name, "!");
+```
 
 </section>
 
