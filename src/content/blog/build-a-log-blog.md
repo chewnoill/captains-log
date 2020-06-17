@@ -5,16 +5,14 @@ date: 2020-06-05T20:30:09.656Z
 
 <h3 className="title" children={title}/>
 
+
 <article>
 
 <heading>
 
-What is a Log Blog?
-
-[https://github.githubassets.com/favicons/favicon.png](https://github.com/chewnoill/captains-log)
 </heading>
 
-<Prompt date={date}/>
+<Prompt date={date}/> 
 
 We're building a **Jamstack** log blog built with **React**,
 **Typescript**, **MDX**, we're **SSR**ing the whole thing and
@@ -24,7 +22,7 @@ uploading it onto a **CDN** :rocket:
 
 I like the idea of name dropping a bunch of tech buzzwords at the beginning of blog posts, just get it out of the way. Also, **Jamstack** is a cool word.
 
-You can read more about what a **Jamstack** is over at [jamestack.org](https://jamstack.org/)
+You can read more about what a **Jamstack** is over at [jamstack.org](https://jamstack.org/)
 
 </section>
 
@@ -33,25 +31,25 @@ it even better? React. This is where **MDX** comes in,
 which allows us to embed regular react components inside of
 markdown.
 
-
 <section>
 
-`front-matter` was, as far as I can tell, built for a project called **jekyll**. The idea was to have some type of free form content, like a blog post, that you can attach meta data to.
+Shout out to [`mermaid`](https://github.com/mermaid-js/mermaid), a library written in javascript on top of `dot` and `d3` that lets us write simple drawing commands in order to render beautiful graphs as simple svgs.
 
-**Jekyl**'s front-matter documentation is [here](https://jekyllrb.com/docs/front-matter)
-
-```yml
----
-title: Cool Blog Post
-date: 2020-06-05T20:30:09.656Z
----
-some blog content
+Code that looks like this
+```
+graph LR
+A --> B
 ```
 
-Jekyll would then compile all of this data and produce a static artifact. Much like we'll be doing here, only they wrote it in ruby.
+Gets rendered like this:
+```mermaid
+graph LR
+A --> B
+```
 
-We'll be using `front-matter` here as well, and jump through some hoops later on to inject 
-the meta data into the global scope for our react components to reference.
+Mermaid has a bunch of options too, for rendering all different types of graphs and diagrams.
+
+Give their online [live editor](https://mermaid-js.github.io/mermaid-live-editor) a shot, its pretty slick.
 
 </section>
 
@@ -60,11 +58,11 @@ the meta data into the global scope for our react components to reference.
 
 ```mermaid
  stateDiagram
-	MDX --> JSX
+    MDX --> JSX
     JSX --> StaticHTML
     StaticHTML --> Client
-	JSX --> Client
-	Client --> Hydrate
+    JSX --> Client
+    Client --> Hydrate
 ```
 
 </asside>
@@ -221,9 +219,9 @@ export const hydrate = ({
  Log Blog prompt
 </heading>
 
-A generic prompt that starts the narative for the rest of the journal entry. We're already attaching a date to each journal entry so we might as well reuse it here also.
+A generic prompt that starts the narrative for the rest of the journal entry. We're already attaching meta data to each journal entry, using `front-matter`, which we can reference inside our MDX components. One of those meta data fields is called `date` and it holds the date the entry was published.
 
-Because we're doing everything with React, it should be as simple as adding a new component to our MDX context and we can pass in the date we made sure to include in the MDX scope. 
+Then we can simply include the component in our MDX document:
 
 ```md
 <Prompt date={date}/>
@@ -233,16 +231,11 @@ Which renders:
 
 <Prompt date={date}/>
 
-
-<section>
-
 <heading>
 And beyond...
 </heading>
 
 At which point you can blog about being a starfleet captain or something, I don't know, I haven't gotten that far yet.
-
-</section>
 
 
 </article>
