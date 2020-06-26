@@ -7,7 +7,7 @@ mermaid.initialize({
   startOnLoad: false,
 });
 
-export default ({ children }) => {
+export default React.memo(({ children }: {children: string}) => {
   const [content, setContent] = React.useState(null);
   const [error, setError] = React.useState(false);
 
@@ -31,4 +31,4 @@ export default ({ children }) => {
       {error && <Code>{children}</Code>}
     </>
   );
-};
+});
